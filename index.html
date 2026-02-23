@@ -1,276 +1,298 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EdyMichaelCover • Sistema Oficial 2026</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EdyMichaelCover • Sistema Oficial 2026</title>
 
-<style>
-:root{
-  --gold:#d4af37;
-  --gold2:#f2d06b;
-}
+    <style>
+      :root {
+        --gold: #d4af37;
+        --gold2: #f2d06b;
+      }
 
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#000;
-  color:#fff;
-  padding:20px;
-}
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        padding: 20px;
+      }
 
-h1{
-  text-align:center;
-  color:var(--gold2);
-  margin-bottom:5px;
-}
+      h1 {
+        text-align: center;
+        color: var(--gold2);
+        margin-bottom: 5px;
+      }
 
-.sub{
-  text-align:center;
-  font-size:13px;
-  color:#aaa;
-  margin-bottom:20px;
-}
+      .sub {
+        text-align: center;
+        font-size: 13px;
+        color: #aaa;
+        margin-bottom: 20px;
+      }
 
-.box{
-  border:1px solid rgba(212,175,55,.3);
-  border-radius:15px;
-  padding:15px;
-  margin-bottom:20px;
-}
+      .box {
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
 
-select,input{
-  padding:6px;
-  background:#111;
-  color:#fff;
-  border:1px solid rgba(212,175,55,.3);
-  border-radius:8px;
-}
+      select,
+      input {
+        padding: 6px;
+        background: #111;
+        color: #fff;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 8px;
+      }
 
-button{
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
-  margin:5px;
-}
+      button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin: 5px;
+      }
 
-.gold{
-  background:linear-gradient(var(--gold2),var(--gold));
-  color:#000;
-}
+      .gold {
+        background: linear-gradient(var(--gold2), var(--gold));
+        color: #000;
+      }
 
-.danger{
-  background:#400;
-  color:#fff;
-}
+      .danger {
+        background: #400;
+        color: #fff;
+      }
 
-.timer{
-  font-size:30px;
-  text-align:center;
-  color:var(--gold2);
-  font-weight:bold;
-}
+      .timer {
+        font-size: 30px;
+        text-align: center;
+        color: var(--gold2);
+        font-weight: bold;
+      }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
-}
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
 
-th,td{
-  border:1px solid rgba(212,175,55,.2);
-  padding:8px;
-  text-align:center;
-}
+      th,
+      td {
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 8px;
+        text-align: center;
+      }
 
-th{
-  background:#111;
-  color:var(--gold2);
-}
+      th {
+        background: #111;
+        color: var(--gold2);
+      }
 
-.ok{color:#2ecc71;font-weight:bold;}
-.late{color:#ff4d4d;font-weight:bold;}
+      .ok {
+        color: #2ecc71;
+        font-weight: bold;
+      }
+      .late {
+        color: #ff4d4d;
+        font-weight: bold;
+      }
 
-.rank{
-  margin-top:15px;
-  font-weight:bold;
-}
+      .rank {
+        margin-top: 15px;
+        font-weight: bold;
+      }
 
-/* PRINT */
-@media print{
-  body{background:#fff;color:#000;}
-  h1{color:#000;}
-  th{background:#eee;color:#000;}
-  button{display:none;}
-}
-</style>
-</head>
-<body>
+      /* PRINT */
+      @media print {
+        body {
+          background: #fff;
+          color: #000;
+        }
+        h1 {
+          color: #000;
+        }
+        th {
+          background: #eee;
+          color: #000;
+        }
+        button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EdyMichaelCover</h1>
+    <div class="sub">Sistema Oficial de Ensaio 2026 • Abizael & Patrick</div>
 
-<h1>EdyMichaelCover</h1>
-<div class="sub">Sistema Oficial de Ensaio 2026 • Abizael & Patrick</div>
+    <div class="box">
+      Data: <span id="data"></span><br /><br />
 
-<div class="box">
-Data: <span id="data"></span><br><br>
+      Duração:
+      <select id="duracao">
+        <option value="60">1h</option>
+        <option value="90" selected>1h30</option>
+        <option value="120">2h</option>
+      </select>
 
-Duração:
-<select id="duracao">
-<option value="60">1h</option>
-<option value="90" selected>1h30</option>
-<option value="120">2h</option>
-</select>
+      Início:
+      <input type="time" id="inicio" value="20:30" />
 
-Início:
-<input type="time" id="inicio" value="20:30">
+      <button class="gold" onclick="iniciar()">Iniciar Ensaio</button>
+      <button class="danger" onclick="resetMes()">Reset Mês</button>
+      <button class="gold" onclick="window.print()">Salvar PDF</button>
+    </div>
 
-<button class="gold" onclick="iniciar()">Iniciar Ensaio</button>
-<button class="danger" onclick="resetMes()">Reset Mês</button>
-<button class="gold" onclick="window.print()">Salvar PDF</button>
-</div>
+    <div class="box">
+      <div class="timer" id="contador">--:--:--</div>
+    </div>
 
-<div class="box">
-<div class="timer" id="contador">--:--:--</div>
-</div>
+    <div class="box">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Chegada</th>
+            <th>Status</th>
+            <th>Atrasos</th>
+            <th>Pontos</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+      </table>
+    </div>
 
-<div class="box">
-<table>
-<thead>
-<tr>
-<th>Nome</th>
-<th>Chegada</th>
-<th>Status</th>
-<th>Atrasos</th>
-<th>Pontos</th>
-<th>Ação</th>
-</tr>
-</thead>
-<tbody id="tabela"></tbody>
-</table>
-</div>
+    <div class="box rank" id="ranking"></div>
 
-<div class="box rank" id="ranking"></div>
+    <script>
+      const nomes = ["Abizael", "Patrick"];
+      let dados = JSON.parse(localStorage.getItem("EMC_OFICIAL")) || {};
+      let fimEnsaio = null;
+      let timer = null;
 
-<script>
-const nomes=["Abizael","Patrick"];
-let dados=JSON.parse(localStorage.getItem("EMC_OFICIAL"))||{};
-let fimEnsaio=null;
-let timer=null;
+      function atualizarData() {
+        let d = new Date();
+        document.getElementById("data").innerText =
+          d.toLocaleDateString("pt-BR");
+      }
+      atualizarData();
 
-function atualizarData(){
-  let d=new Date();
-  document.getElementById("data").innerText=d.toLocaleDateString("pt-BR");
-}
-atualizarData();
+      function mesAtual() {
+        let d = new Date();
+        return d.getFullYear() + "-" + (d.getMonth() + 1);
+      }
 
-function mesAtual(){
-  let d=new Date();
-  return d.getFullYear()+"-"+(d.getMonth()+1);
-}
+      function iniciar() {
+        let dur = parseInt(document.getElementById("duracao").value);
+        let inicio = document.getElementById("inicio").value;
+        let base = new Date();
+        let [h, m] = inicio.split(":");
+        base.setHours(h, m, 0, 0);
+        fimEnsaio = new Date(base.getTime() + dur * 60000);
+        atualizarTimer();
+        timer = setInterval(atualizarTimer, 1000);
+      }
 
-function iniciar(){
-  let dur=parseInt(document.getElementById("duracao").value);
-  let inicio=document.getElementById("inicio").value;
-  let base=new Date();
-  let [h,m]=inicio.split(":");
-  base.setHours(h,m,0,0);
-  fimEnsaio=new Date(base.getTime()+dur*60000);
-  atualizarTimer();
-  timer=setInterval(atualizarTimer,1000);
-}
+      function atualizarTimer() {
+        if (!fimEnsaio) return;
+        let diff = fimEnsaio - new Date();
+        if (diff < 0) diff = 0;
+        let h = Math.floor(diff / 3600000);
+        let m = Math.floor((diff % 3600000) / 60000);
+        let s = Math.floor((diff % 60000) / 1000);
+        document.getElementById("contador").innerText =
+          String(h).padStart(2, "0") +
+          ":" +
+          String(m).padStart(2, "0") +
+          ":" +
+          String(s).padStart(2, "0");
+      }
 
-function atualizarTimer(){
-  if(!fimEnsaio) return;
-  let diff=fimEnsaio-new Date();
-  if(diff<0) diff=0;
-  let h=Math.floor(diff/3600000);
-  let m=Math.floor((diff%3600000)/60000);
-  let s=Math.floor((diff%60000)/1000);
-  document.getElementById("contador").innerText=
-    String(h).padStart(2,"0")+":"+
-    String(m).padStart(2,"0")+":"+
-    String(s).padStart(2,"0");
-}
+      function registrar(nome) {
+        let mes = mesAtual();
+        if (!dados[mes]) dados[mes] = {};
+        if (!dados[mes][nome]) dados[mes][nome] = { atrasos: 0, pontos: 0 };
 
-function registrar(nome){
-  let mes=mesAtual();
-  if(!dados[mes]) dados[mes]={};
-  if(!dados[mes][nome]) dados[mes][nome]={atrasos:0,pontos:0};
+        if (dados[mes][nome].atrasos >= 3) {
+          alert("Bloqueado por 3 atrasos!");
+          return;
+        }
 
-  if(dados[mes][nome].atrasos>=3){
-    alert("Bloqueado por 3 atrasos!");
-    return;
-  }
+        let agora = new Date();
+        let chegada = agora.toTimeString().slice(0, 5);
 
-  let agora=new Date();
-  let chegada=agora.toTimeString().slice(0,5);
+        let status = "Dentro";
+        let classe = "ok";
 
-  let status="Dentro";
-  let classe="ok";
+        if (fimEnsaio && agora > fimEnsaio) {
+          status = "Fora";
+          classe = "late";
+          dados[mes][nome].atrasos++;
+          dados[mes][nome].pontos -= 2;
+        } else {
+          dados[mes][nome].pontos += 2;
+        }
 
-  if(fimEnsaio && agora>fimEnsaio){
-    status="Fora";
-    classe="late";
-    dados[mes][nome].atrasos++;
-    dados[mes][nome].pontos-=2;
-  }else{
-    dados[mes][nome].pontos+=2;
-  }
+        dados[mes][nome].chegada = chegada;
+        dados[mes][nome].status = status;
+        localStorage.setItem("EMC_OFICIAL", JSON.stringify(dados));
+        render();
+      }
 
-  dados[mes][nome].chegada=chegada;
-  dados[mes][nome].status=status;
-  localStorage.setItem("EMC_OFICIAL",JSON.stringify(dados));
-  render();
-}
+      function render() {
+        let mes = mesAtual();
+        let tbody = document.getElementById("tabela");
+        tbody.innerHTML = "";
+        nomes.forEach((n) => {
+          if (!dados[mes]) dados[mes] = {};
+          if (!dados[mes][n]) dados[mes][n] = { atrasos: 0, pontos: 0 };
+          let d = dados[mes][n];
+          let bloqueado = d.atrasos >= 3;
 
-function render(){
-  let mes=mesAtual();
-  let tbody=document.getElementById("tabela");
-  tbody.innerHTML="";
-  nomes.forEach(n=>{
-    if(!dados[mes]) dados[mes]={};
-    if(!dados[mes][n]) dados[mes][n]={atrasos:0,pontos:0};
-    let d=dados[mes][n];
-    let bloqueado=d.atrasos>=3;
-
-    tbody.innerHTML+=`
+          tbody.innerHTML += `
     <tr>
     <td>${n}</td>
-    <td>${d.chegada||"--:--"}</td>
-    <td class="${d.status=="Fora"?"late":"ok"}">${d.status||"Aguardando"}</td>
+    <td>${d.chegada || "--:--"}</td>
+    <td class="${d.status == "Fora" ? "late" : "ok"}">${d.status || "Aguardando"}</td>
     <td>${d.atrasos}</td>
     <td>${d.pontos}</td>
-    <td><button ${bloqueado?"disabled":""} class="gold" onclick="registrar('${n}')">${bloqueado?"Bloqueado":"Registrar"}</button></td>
+    <td><button ${bloqueado ? "disabled" : ""} class="gold" onclick="registrar('${n}')">${bloqueado ? "Bloqueado" : "Registrar"}</button></td>
     </tr>`;
-  });
+        });
 
-  ranking();
-}
+        ranking();
+      }
 
-function ranking(){
-  let mes=mesAtual();
-  let arr=nomes.map(n=>{
-    return {nome:n,p:(dados[mes]&&dados[mes][n])?dados[mes][n].pontos:0};
-  });
-  arr.sort((a,b)=>b.p-a.p);
-  let html="<b>Ranking Mensal</b><br>";
-  arr.forEach((r,i)=>{
-    html+=(i+1)+"º - "+r.nome+" ("+r.p+" pts)<br>";
-  });
-  document.getElementById("ranking").innerHTML=html;
-}
+      function ranking() {
+        let mes = mesAtual();
+        let arr = nomes.map((n) => {
+          return {
+            nome: n,
+            p: dados[mes] && dados[mes][n] ? dados[mes][n].pontos : 0,
+          };
+        });
+        arr.sort((a, b) => b.p - a.p);
+        let html = "<b>Ranking Mensal</b><br>";
+        arr.forEach((r, i) => {
+          html += i + 1 + "º - " + r.nome + " (" + r.p + " pts)<br>";
+        });
+        document.getElementById("ranking").innerHTML = html;
+      }
 
-function resetMes(){
-  if(confirm("Resetar dados do mês?")){
-    delete dados[mesAtual()];
-    localStorage.setItem("EMC_OFICIAL",JSON.stringify(dados));
-    render();
-  }
-}
+      function resetMes() {
+        if (confirm("Resetar dados do mês?")) {
+          delete dados[mesAtual()];
+          localStorage.setItem("EMC_OFICIAL", JSON.stringify(dados));
+          render();
+        }
+      }
 
-render();
-</script>
-
-</body>
+      render();
+    </script>
+  </body>
 </html>
